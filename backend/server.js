@@ -17,13 +17,13 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet());
 
 app.use(cors({
-  origin: [
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-    "https://cims-khaki.vercel.app",
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+    origin: [
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+        "https://cims-khaki.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json({ limit: "10kb" }));
