@@ -16,12 +16,21 @@ const PORT = process.env.PORT || 5000;
 
 app.use(helmet());
 
+const allowedOrigins = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://cims-j5ymndxri-cims3.vercel.app"
+];
+
 app.use(cors({
-    origin: [
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-        "https://cims-j5ymndxri-cims3.vercel.app"
-    ],
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+
+        console.error("CORS blocked origin:", origin);
+        return callback(new Error("Origin not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
