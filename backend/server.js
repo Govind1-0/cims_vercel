@@ -20,7 +20,7 @@ app.use(cors({
     origin: [
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-        "https://cims-j5ymndxri-cims3.vercel.app/"
+        "https://cims-j5ymndxri-cims3.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
